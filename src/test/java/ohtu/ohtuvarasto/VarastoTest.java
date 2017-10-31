@@ -65,4 +65,63 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void kelvotonVarastoTilavuus() {
+        Varasto v = new Varasto(-10);
+        assertEquals(0, v.getTilavuus(), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void konstruktoriLuoTilavuudeltaanSaldoltaanOikein() {
+        Varasto v = new Varasto(10,5);
+        assertEquals(10, v.getTilavuus(), vertailuTarkkuus);
+        assertEquals(5, v.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void kelvotonVarastoSaldo() {
+        Varasto v = new Varasto(10,-5);
+        assertEquals(0, v.getSaldo(), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void kelvotonVarastoTilavuusSaldollinen() {
+        Varasto v = new Varasto(-10,5);
+        assertEquals(0, v.getTilavuus(), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void lisaaKelvotonAli()  {
+        double saldoAlku = varasto.getSaldo();
+        varasto.lisaaVarastoon(-10);
+        assertEquals(saldoAlku, varasto.getSaldo(), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void lisaaKelvotonYli()  {
+        varasto.lisaaVarastoon(varasto.paljonkoMahtuu()+1);
+        assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void otaKelvotonAli()  {
+        assertEquals(0, varasto.otaVarastosta(-10), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void otaKelvotonYli()  {
+        assertEquals(varasto.getSaldo(), varasto.otaVarastosta(varasto.getSaldo()+1), vertailuTarkkuus);
+
+    }
+
+    @Test
+    public void toStringTulostaaOikein()  {
+        assertEquals("saldo = " + varasto.getSaldo() + ", vielä tilaa " + varasto.paljonkoMahtuu(), varasto.toString());
+    }
 }

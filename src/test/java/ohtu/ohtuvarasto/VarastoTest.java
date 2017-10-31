@@ -110,7 +110,7 @@ public class VarastoTest {
 
     @Test
     public void otaKelvotonAli()  {
-        assertEquals(0, varasto.otaVarastosta(-10), vertailuTarkkuus);
+        assertEquals(0, varasto.otaVarastosta(-11), vertailuTarkkuus);
 
     }
 

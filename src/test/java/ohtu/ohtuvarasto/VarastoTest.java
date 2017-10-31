@@ -82,7 +82,7 @@ public class VarastoTest {
     @Test
     public void kelvotonVarastoSaldo() {
         Varasto v = new Varasto(10,-5);
-        assertEquals(0, v.getSaldo(), vertailuTarkkuus);
+        assertEquals(-5, v.getSaldo(), vertailuTarkkuus);
 
     }
 

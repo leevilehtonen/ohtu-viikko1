@@ -39,6 +39,10 @@ jar {
     }
 }
 
+tasks.withType(Checkstyle) {
+    exclude 'main/**'
+}
+
 jacocoTestReport {
     reports {
         xml.enabled true
